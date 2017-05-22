@@ -16,7 +16,7 @@ npm install
 
 ## Usage - CLI
 
-Install globally the package
+Install globally the package and run the ```ts-seed [project-name]``` command
 
 ```
 npm install -g @msg-labs/ts-seed
