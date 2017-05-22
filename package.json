@@ -1,0 +1,27 @@
+{
+  "name": "@msg-labs/ts-seed",
+  "version": "1.0.0",
+  "description": "Use this project as seed for your typescript project or generate a new one using the CLI tool",
+  "bin": {
+      "ts-seed": "bin/ts-seed.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msg-labs/ts-seed.git"
+  },
+  "keywords": [
+      "typescript",
+      "webpack",
+      "seed",
+      "msg-labs"
+  ],
+  "author": "Miguel Sanchez Gonzalez <miguelsanychez@gmail.com>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/msg-labs/ts-seed/issues"
+  },
+  "homepage": "https://github.com/msg-labs/ts-seed#readme"
+}
