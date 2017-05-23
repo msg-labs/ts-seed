@@ -1,27 +1,33 @@
 # Typescript web seed project
 
-Use this project as seed for your typescript project or generate a new one using
-the CLI tool
+Generate a new typescript project in matter of seconds.
 
-## Usage - Clone
+**It establish the base, you add the magic!**
 
-Just clone the repository and install the dependencies, a post install hook will
-trigger the directory clean up.
+## installing
 
-```
-git clone https://github.com/msg-labs/test-module my-new-ts-app
-cd my-new-ts-app
-npm install
-```
-
-## Usage - CLI
-
-Install globally the package and run the ```ts-seed [project-name]``` command
-
+Install globally the ```ts-seed``` package:
 ```
 npm install -g @msg-labs/ts-seed
-ts-seed my-new-ts-app
-cd my-new-ts-app
+```
+
+## Usage
+
+```
+
+  Usage: ts-seed [options] [command]
+
+
+  Commands:
+
+    new [name]  Generate a new project using the specified name
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+
+
 ```
 
 ## Licensing
