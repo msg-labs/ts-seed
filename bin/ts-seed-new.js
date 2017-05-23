@@ -58,7 +58,7 @@ module.exports = ( name = 'ts-seed' ) => {
 
 
     const install$ = Observable.bindNodeCallback( exec )
-        ( 'npm install', { cwd: `./${name}` } );
+        ( 'npm install --save-dev awesome-typescript-loader html-webpack-plugin http-server typescript webpack webpack-dev-server', { cwd: `./${name}` } );
 
     mkdirp$
         .switchMapTo( data$ )
