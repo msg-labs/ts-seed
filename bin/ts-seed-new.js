@@ -2,6 +2,7 @@
 
 // Node
 const fs = require( 'fs' );
+const { exec } = require( 'child_process' );
 const { resolve } = require( 'path' );
 
 // Libraries
@@ -14,7 +15,6 @@ const mkdirp = require( 'mkdirp' );
 //
 // Data
 //
-
 const templates = [
     'package.json',
     'webpack.config.js',
@@ -22,46 +22,47 @@ const templates = [
     'src/index.ts'
 ];
 
-const user$ = Observable
-    .bindNodeCallback( config )()
-    .pluck( 'user' );
-
 const seed = resolve( __dirname, '../seed/' );
 
 const data = {
     name: 'test',
-    description: 'Just a test, nothing else :)',
+    description: '',
     author: {
         name: '',
         email: ''
     }
 };
 
-const build = ( name, data ) => file => 
+const build = name => ( file, data ) =>
     mustache
         .compileAndRender( `${seed}/${file}.mustache`, data )
         .pipe( fs.createWriteStream( `./${name}/${file}` ) );
 
 
-// TODO refactor
 module.exports = ( name = 'ts-seed' ) => {
 
-    const mkdirp$ = Observable.bindNodeCallback( mkdirp );
+    const compile = build( name );
+
+    const mkdirp$ = Observable.bindNodeCallback( mkdirp )( `./${name}/src` );
 
     const templates$ = Observable.from( templates )
-    
-    const data$ = user$
+
+    const data$ = Observable
+        .bindNodeCallback( config )()
+        .pluck( 'user' )
         .map( user => ( { author: user } ) )
-        .map( author => Object.assign( {}, data, author ) );
+        .map( author => Object.assign( {}, data, author, { name: name } ) );
 
-    const builds$ = templates$
-        .switchMapTo( data$, ( template, data ) => [ template, data ] )
-        .do( function ( data ) { console.dir( data ) } )
-        .map( data => build( name, data[1] )( data[0] ) )
 
-    mkdirp$( `./${name}/src` )
+    const install$ = Observable.bindNodeCallback( exec )
+        ( 'npm install', { cwd: `./${name}` } );
+
+    mkdirp$
         .switchMapTo( data$ )
-        .switchMapTo( builds$ )
-        .subscribe( _ => console.log( 'template moved' ) );
+        .switchMapTo( templates$, ( template, user ) => compile( user, template ) )
+        .takeLast( 1 )
+        .do( () => console.log( 'installing...' ) )
+        .switchMapTo( install$ )
+        .subscribe( () => console.log( 'installed' ) );
 
 };
