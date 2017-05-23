@@ -16,6 +16,8 @@ const mkdirp = require( 'mkdirp' );
 // Data
 //
 const templates = [
+    'LICENSE',
+    'README.md',
     'package.json',
     'webpack.config.js',
     'src/index.html',
