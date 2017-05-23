@@ -20,6 +20,7 @@ const templates = [
     'README.md',
     'package.json',
     'webpack.config.js',
+    'tsconfig.json',
     'src/index.html',
     'src/index.ts'
 ];

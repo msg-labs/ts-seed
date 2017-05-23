@@ -40,6 +40,7 @@ npm install -g @msg-labs/ts-seed
 |-- src
 |   |-- index.html
 |   `-- index.ts
+|-- tsconfig.json
 `-- webpack.config.js
 ```
 
