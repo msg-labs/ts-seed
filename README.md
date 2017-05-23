@@ -30,6 +30,19 @@ npm install -g @msg-labs/ts-seed
 
 ```
 
+## The structure
+
+```
+[name]
+|-- LICENSE
+|-- README.md
+|-- package.json
+|-- src
+|   |-- index.html
+|   `-- index.ts
+`-- webpack.config.js
+```
+
 ## Licensing
 
 Copyright © 2017 Miguel Sanchez Gonzalez <miguelsanychez@gmail.com>
