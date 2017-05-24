@@ -10,7 +10,7 @@ program
     .version( version );
 
 program
-    .command( 'new [name]' )
+    .arguments( '[name]' )
     .description( 'Generate a new project using the specified name' )
     .action( generate );
 

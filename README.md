@@ -14,20 +14,14 @@ npm install -g @msg-labs/ts-seed
 ## Usage
 
 ```
+  Usage: ts-seed [options] [name]
 
-  Usage: ts-seed [options] [command]
-
-
-  Commands:
-
-    new [name]  Generate a new project using the specified name
+  Generate a new project using the specified name
 
   Options:
 
     -h, --help     output usage information
     -V, --version  output the version number
-
-
 ```
 
 ## The structure
