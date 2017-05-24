@@ -63,33 +63,3 @@ const install = ( target, dependencies, cwd ) =>
 
 
 module.exports.install = install;
-
-
-/**
- * Shorthand of
- *
- * npm.install( 'dev', [ 'pug' ] );
- *
- * @param {string[]} dependencies List of dependencies to be installed under the
- *  dev environment
- *
- * @see install
- *
- */
-module.exports.saveDev = ( dependencies, cwd ) => install( 'dev', dependencies, cwd );
-
-
-/**
- * Shorthand of
- *
- * npm.install( 'prod', [ 'pug' ] );
- *
- * @param {string[]} dependencies List of dependencies to be installed under the
- *  production environment
- *
- * @see install
- *
- */
-module.exports.save = ( dependencies, cwd ) => install( 'prod', dependencies, cwd );
-
-module.exports.noSave = ( dependencies, cwd ) => install( undefined, dependencies, cwd );

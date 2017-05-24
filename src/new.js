@@ -11,7 +11,7 @@ const { Observable } = require( 'rxjs' );
 const mkdirp = require( 'mkdirp' );
 
 // Own
-const { saveDev } = require( './ts-seed-new-install' );
+const { saveDev } = require( '../src/install' );
 
 //
 // Data
