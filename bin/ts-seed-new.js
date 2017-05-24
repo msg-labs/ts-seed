@@ -2,7 +2,6 @@
 
 // Node
 const fs = require( 'fs' );
-const { exec } = require( 'child_process' );
 const { resolve } = require( 'path' );
 
 // Libraries
@@ -11,6 +10,8 @@ const config = require( 'git-config' );
 const { Observable } = require( 'rxjs' );
 const mkdirp = require( 'mkdirp' );
 
+// Own
+const { saveDev } = require( './ts-seed-new-install' );
 
 //
 // Data
@@ -23,6 +24,15 @@ const templates = [
     'tsconfig.json',
     'src/index.html',
     'src/index.ts'
+];
+
+const devDependencies = [
+    "awesome-typescript-loader",
+    "html-webpack-plugin",
+    "http-server",
+    "typescript",
+    "webpack",
+    "webpack-dev-server"
 ];
 
 const seed = resolve( __dirname, '../seed/' );
@@ -57,8 +67,7 @@ module.exports = ( name = 'ts-seed' ) => {
         .map( author => Object.assign( {}, data, author, { name: name } ) );
 
 
-    const install$ = Observable.bindNodeCallback( exec )
-        ( 'npm install --save-dev awesome-typescript-loader html-webpack-plugin http-server typescript webpack webpack-dev-server', { cwd: `./${name}` } );
+    const install$ = saveDev( devDependencies, `./${name}` );
 
     mkdirp$
         .switchMapTo( data$ )
