@@ -3,7 +3,7 @@
 const program = require( 'commander' );
 const { version } = require( '../package.json' );
 
-const generate = require( './ts-seed-new' );
+const generate = require( '../src/new' );
 
 
 program
@@ -16,4 +16,3 @@ program
 
 program
     .parse( process.argv );
-
