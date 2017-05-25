@@ -11,7 +11,9 @@ const { Observable } = require( 'rxjs' );
 const mkdirp = require( 'mkdirp' );
 
 // Own
-const { saveDev } = require( '../src/install' );
+const { saveDev, save } = require( '../src/install' );
+const { parse } = require( '../src/install/utils' );
+
 
 //
 // Data
@@ -24,15 +26,6 @@ const templates = [
     'tsconfig.json',
     'src/index.html',
     'src/index.ts'
-];
-
-const devDependencies = [
-    "awesome-typescript-loader",
-    "html-webpack-plugin",
-    "http-server",
-    "typescript",
-    "webpack",
-    "webpack-dev-server"
 ];
 
 const seed = resolve( __dirname, '../seed/' );
@@ -52,9 +45,11 @@ const build = name => ( file, data ) =>
         .pipe( fs.createWriteStream( `./${name}/${file}` ) );
 
 
-module.exports = ( name = 'ts-seed' ) => {
+module.exports = ( name = 'ts-seed', options ) => {
 
     const compile = build( name );
+
+    options = parse( options );
 
     const mkdirp$ = Observable.bindNodeCallback( mkdirp )( `./${name}/src` );
 
@@ -66,8 +61,10 @@ module.exports = ( name = 'ts-seed' ) => {
         .map( user => ( { author: user } ) )
         .map( author => Object.assign( {}, data, author, { name: name } ) );
 
-
-    const install$ = saveDev( devDependencies, `./${name}` );
+    const install$ = Observable.zip(
+        save( options.dependencies, `./${name}` ) ,
+        saveDev( options.devDependencies, `./${name}` )
+    );
 
     mkdirp$
         .switchMapTo( data$ )

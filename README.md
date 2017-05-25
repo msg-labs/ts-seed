@@ -14,19 +14,33 @@ npm install -g @msg-labs/ts-seed
 ## Usage
 
 ```
-  Usage: ts-seed [options] [name]
 
-  Generate a new project using the specified name
+  Usage: ts-seed [options] <name>
 
   Options:
 
-    -h, --help     output usage information
-    -V, --version  output the version number
+    -h, --help        output usage information
+    -V, --version     output the version number
+    -d, --prod <dep>  Dependencies to install along the default ones
+    -D, --dev <dep>   Development dependencies to install along the default ones
+
 ```
+
+## Multiple dependencies
+
+To add multiple dependencies of any kind of type just add more switches
+
+```
+ts-seed my-project -d pug -d lodash -D mocha
+```
+
+Will install ```pug``` and ```lodash``` as dependencies and ```mocha``` as
+devDependency
 
 ## The structure
 
 ```
+
 [name]
 |-- LICENSE
 |-- README.md
@@ -36,6 +50,7 @@ npm install -g @msg-labs/ts-seed
 |   `-- index.ts
 |-- tsconfig.json
 `-- webpack.config.js
+
 ```
 
 ## Licensing
