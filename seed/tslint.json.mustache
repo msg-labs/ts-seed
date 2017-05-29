@@ -1,0 +1,42 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "adjacent-overload-signatures": true,
+        "member-access": [
+            true,
+            "check-accessor",
+            "check-constructor"
+        ],
+        "member-ordering": [
+            true, { "order": "fields-first" }
+        ],
+        "no-any": true,
+        "no-empty-interface": true,
+        "no-import-side-effect": [
+            true,
+            {
+                "ignore-module": "(\\.html|\\.css|\\.scss)$"
+            }
+        ],
+        "no-inferrable-types": [ false ],
+        "no-internal-module": true,
+        "no-magic-numbers": true,
+        "no-namespace": [
+            true
+        ],
+        "no-non-null-assertion": false,
+        "no-reference": true,
+        "no-unnecessary-type-assertion": false,
+        "no-var-requires": true,
+        "only-arrow-functions": [
+            true
+        ],
+        "prefer-for-of": true,
+        "promise-function-async": true
+    },
+    "rulesDirectory": []
+}
