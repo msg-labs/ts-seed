@@ -5,7 +5,8 @@
   "scripts": {
     "prebuild": "rm -rf output/",
     "build": "webpack --optimize-minimize",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "lint": "tslint --project tsconfig.json --type-check"
   },
   "keywords": [
       "typescript",
