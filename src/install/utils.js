@@ -7,7 +7,8 @@ const devDependencies = [
     "http-server",
     "typescript",
     "webpack",
-    "webpack-dev-server"
+    "webpack-dev-server",
+    "tslint"
 ];
 
 const parseParameters = parameters => ( {
