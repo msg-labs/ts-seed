@@ -24,6 +24,7 @@ const templates = [
     'package.json',
     'webpack.config.js',
     'tsconfig.json',
+    'tslint.json',
     'src/index.html',
     'src/index.ts'
 ];
