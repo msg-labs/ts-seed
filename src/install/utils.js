@@ -8,7 +8,8 @@ const devDependencies = [
     "typescript",
     "webpack",
     "webpack-dev-server",
-    "tslint"
+    "tslint",
+    "husky"
 ];
 
 const parseParameters = parameters => ( {
