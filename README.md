@@ -42,6 +42,9 @@ devDependency
 ```
 
 [name]
+|-- .git
+|--- |-- ...
+|--- `-- ...
 |-- LICENSE
 |-- README.md
 |-- package.json
@@ -49,6 +52,7 @@ devDependency
 |   |-- index.html
 |   `-- index.ts
 |-- tsconfig.json
+|-- tslint.json
 `-- webpack.config.js
 
 ```
