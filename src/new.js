@@ -13,6 +13,7 @@ const mkdirp = require( 'mkdirp' );
 // Own
 const { saveDev, save } = require( '../src/install' );
 const { parse } = require( '../src/install/utils' );
+const { init$ } = require( '../src/install/git')
 
 
 //
@@ -71,6 +72,7 @@ module.exports = ( name = 'ts-seed', options ) => {
         .switchMapTo( data$ )
         .switchMapTo( templates$, ( template, user ) => compile( user, template ) )
         .takeLast( 1 )
+        .switchMapTo( init$( `./${name}` ) )
         .do( () => console.log( 'installing...' ) )
         .switchMapTo( install$ )
         .subscribe( () => console.log( 'installed' ) );
