@@ -26,6 +26,7 @@ const templates = [
     'webpack.config.js',
     'tsconfig.json',
     'tslint.json',
+    '.gitignore',
     'src/index.html',
     'src/index.ts'
 ];
