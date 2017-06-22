@@ -13,7 +13,7 @@ const mkdirp = require( 'mkdirp' );
 // Own
 const { saveDev, save } = require( '../src/install' );
 const { parse } = require( '../src/install/utils' );
-const { init$ } = require( '../src/install/git')
+const { init$, firstCommit$ } = require( '../src/install/git')
 
 
 //
@@ -76,6 +76,7 @@ module.exports = ( name = 'ts-seed', options ) => {
         .switchMapTo( init$( `./${name}` ) )
         .do( () => console.log( 'installing...' ) )
         .switchMapTo( install$ )
+        .switchMapTo( firstCommit$( `./${name}` ) )
         .subscribe( () => console.log( 'installed' ) );
 
 };

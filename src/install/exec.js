@@ -7,7 +7,7 @@ const rxExec$ = Observable.bindNodeCallback( exec );
 
 const exec$ = ( command, cwd = './' ) =>
     rxExec$( command, { cwd: cwd } )
-        .catch( ( error ) => rxExec$( 'echo "exec has failed";' ) );
+        .catch( ( error ) => Observable.of( error ) );
 
 
 module.exports.exec$ = exec$;
